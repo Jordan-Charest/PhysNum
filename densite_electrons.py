@@ -1,11 +1,8 @@
-#### QUESTION 1 DU TP INTÉGRATION NUMÉRIQUE ###
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Fonction générale pour déterminer la densité électronique d'un matériau
 
-# FONCTION GÉNÉRALE POUR TROUVER LA DENSITÉ ÉLECTRONIQUE
 # TODO: Ajouter une description !?!?!?
 # TODO: vérifier limpact des erreurs d'arrondi
 # Format de données: données = [[Z1, P1, M1], [Z2, P2, M2], ...]
@@ -38,6 +35,6 @@ donnees_os = [
     [20, 0.147000, 40.078]
     ]
 
-densite_os = densiteelec(1, donnees_os)
+densite_os = densiteelec(1.85, donnees_os)
 
 print(densite_os)
