@@ -9,8 +9,7 @@ def romberg(f, N_max, a, b, i_max):
         Rn.append([trapeze(f, N, a, b)])
         N = 2 * N
         for m in range(i):
-            Rn[i].append(Rn[i][m] + (Rn[i][m] - Rn[i-1][m]) / (4**(m+2) - 1))
-    
+            Rn[i].append(Rn[i][m] + (Rn[i][m] - Rn[i-1][m]) / (4**(m+1) - 1))
     return Rn[-1][-1]
 
 
