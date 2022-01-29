@@ -23,9 +23,12 @@ Ti = 2.4033*10**(-11) # en J
 
 # test des trapezes avec 100 tranches
 
-def func(T):
+def fun(T):
     return pouvoir_arret(T)**(-1)
 
-rep_trapezes = trapeze(func, 10000, 0, Ti) * rho
-
+rep_trapezes = trapeze(fun, 100, 0, Ti) * rho
 print("reponse avec trapezes, os=",rep_trapezes)
+
+test = fun(Ti)
+
+print("test inverse=",test)
