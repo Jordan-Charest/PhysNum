@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 def densiteelec(rho, donnees):
     nombreelec = []
     for i in donnees:
-        nombreelec.append(i[1]*rho/i[2]*i[0]*6.022)
-    return sum(nombreelec)*10**(23)
+        nombreelec.append(i[1]*rho/i[2]*i[0]*6.02214076*10**(23))
+    return sum(nombreelec)
 
 
 # Eau liquide

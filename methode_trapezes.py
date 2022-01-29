@@ -15,5 +15,5 @@ def trapeze(f, N, a, b):
 def func(x):
     return x**4 - 2*x + 1
 
-rep = trapeze(func, 10, 0, 2)
+rep = trapeze(func, 100, 0, 2)
 print(rep)
