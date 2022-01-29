@@ -12,7 +12,7 @@ from densite_electrons import densiteelec, densite_os, densite_eau
 
 # On définit la densité d'électrons ne (par exemple ici pour les os)
 
-ne = densite_os
+ne = densite_os*10**6
 
 rho = 1850
 
@@ -26,6 +26,6 @@ Ti = 2.4033*10**(-11) # en J
 def func(T):
     return pouvoir_arret(T)**(-1)
 
-rep_trapezes = trapeze(func, 100, 0, Ti) * rho
+rep_trapezes = trapeze(func, 10000, 0, Ti) * rho
 
 print("reponse avec trapezes, os=",rep_trapezes)
