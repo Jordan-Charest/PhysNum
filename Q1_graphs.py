@@ -9,12 +9,16 @@ from pouvoir_arret import pouvoir_arret
 
 # Code pour tracer les graphiques de pouvoir d'arrêt, comme à la Question 1
 
-T = np.linspace(3, 250, 10000)
+T = np.linspace(3, 250, 1000)
 
 S = []
 
 for i in T:
-    S.append(pouvoir_arret(i))
+    S.append(pouvoir_arret(i, densite_eau))
 
-
+plt.figure()
 plt.plot(T, S)
+plt.xscale("log")
+plt.xlabel("Énergie cinétique initiale [MeV]")
+plt.ylabel("Pouvoir d'arrêt [J/m]")
+plt.show()
