@@ -21,7 +21,11 @@ ne = densite_os*10**6
 print("ne=",ne*10**(6))
 
 
-def pouvoir_arret(T): # Pouvoir d'arrêt avec corrections
+def pouvoir_arret(T, densite): # Pouvoir d'arrêt avec corrections
+    # T de MeV à J
+    T = T / 6241506479963.2
+    # densité électronique de cm-3 à m-3
+    ne = densite*10**6
     gamma = T / (mp * c**2) + 1
     print("mp*c^2=",(mp*c**2))
     print("gamma=",gamma)
@@ -39,4 +43,4 @@ def pouvoir_arret(T): # Pouvoir d'arrêt avec corrections
     return (const * parenth)
 
 
-print("test=",pouvoir_arret(2.4033*10**(-11)))
+print("test=",pouvoir_arret(2.4033*10**(-11)*6241506479963.2, densite_os))
