@@ -1,3 +1,6 @@
+from densite_electrons import densite_eau, densite_os, rho_eau, rho_os
+
+
 ###
 # BUT: définir les constantes utilisées dans les autres scripts
 ###
@@ -14,3 +17,4 @@ delta = 1   # terme considérant les effets de la polarisation
 L1 = 1      # coefficient de correction de Barkas
 L2 = 1      # coefficient de correction de Bloch
 C = 1       # No fucking idea what that is
+dens = {"eau": (densite_eau, rho_eau), "os": (densite_os, rho_os)}

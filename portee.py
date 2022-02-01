@@ -19,16 +19,13 @@ rho = 1850
 # On intègre par la méthode des trapèzes et la méthode de Romberg avec une
 # énergie d'entrée de 150 MeV
 
-Ti = 2.4033*10**(-11) # en J
+Ti = 150 # en MeV
 
 # test des trapezes avec 100 tranches
 
-def fun(T):
-    return pouvoir_arret(T)**(-1)
+def fun(T, milieu):
+    return pouvoir_arret(T, milieu)**(-1)
 
-rep_trapezes = trapeze(fun, 100, 0, Ti) * rho
+rep_trapezes = trapeze(fun, 100, 0, Ti, "os") * dens["os"][1]
 print("reponse avec trapezes, os=",rep_trapezes)
 
-test = fun(Ti)
-
-print("test inverse=",test)
