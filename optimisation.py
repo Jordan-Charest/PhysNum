@@ -23,5 +23,3 @@ for i in sample:
     if temps < 1:
         temps += timeit.timeit(trapeze(fun, 100, 0, Ti, "eau") * dens["eau"][1])
         n += 1
-    
-    
