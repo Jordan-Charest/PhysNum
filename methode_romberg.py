@@ -15,9 +15,9 @@ def romberg(f, i_max, a, b, *args):
 
 # test
 
-import numpy as np
+#import numpy as np
 
 #def func(x):
 #    return np.exp(-x**2)
 
-#print(romberg(func, 4, 0, 1, 3))
+#print(romberg(func, 3, 0, 1))
