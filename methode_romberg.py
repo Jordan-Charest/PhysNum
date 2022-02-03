@@ -2,11 +2,11 @@
 
 from methode_trapezes import trapeze
 
-def romberg(f, N_max, a, b, i_max, *args):
+def romberg(f, i_max, a, b, *args):
     Rn = []
-    N = int(N_max / 2**(i_max-1))
+    N = 1
     for i in range(i_max):
-        Rn.append([trapeze(f, N, a, b, args)])
+        Rn.append([trapeze(f, N, a, b, *args)])
         N = 2 * N
         for m in range(i):
             Rn[i].append(Rn[i][m] + (Rn[i][m] - Rn[i-1][m]) / (4**(m+1) - 1))
@@ -15,9 +15,9 @@ def romberg(f, N_max, a, b, i_max, *args):
 
 # test
 
-import numpy as np
+#import numpy as np
 
 #def func(x):
 #    return np.exp(-x**2)
 
-#print(romberg(func, 4, 0, 1, 3))
+#print(romberg(func, 3, 0, 1))
