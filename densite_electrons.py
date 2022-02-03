@@ -18,9 +18,9 @@ def densiteelec(rho, donnees):
 # Eau liquide
 
 densite_eau = densiteelec(1, [[1, 0.111894, 1.0079], [8, 0.888106, 15.999]])
-rho_eau = 1000
+rho_eau = 1
 
-print(densite_eau)
+print("dens eau=",densite_eau)
 
 
 # Os
@@ -37,6 +37,6 @@ donnees_os = [
     ]
 
 densite_os = densiteelec(1.85, donnees_os)
-rho_os = 1850
+rho_os = 1.850
 
-print(densite_os)
+print("densite os=",densite_os)

@@ -26,6 +26,6 @@ Ti = 150 # en MeV
 def fun(T, milieu):
     return pouvoir_arret(T, milieu)**(-1)
 
-rep_trapezes = trapeze(fun, 100, 0, Ti, "os") * dens["os"][1]
-print("reponse avec trapezes, os=",rep_trapezes)
+rep_trapezes = trapeze(fun, 100, 0, Ti, "eau") * dens["eau"][1] * 1000
+print("reponse avec trapezes, eau=",rep_trapezes)
 
