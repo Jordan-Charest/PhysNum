@@ -54,13 +54,17 @@ t, phi, psi = corde_FTCS(init_phi, init_psi, L, N, t_f, N_t, v)
 
 
 # création de la figure et la ligne qui contiendra les données
-fig2 = plt.figure()
+fig2 = plt.figure(figsize=(10,2))
+fig2.patch.set_facecolor('white')
 ax = plt.axes(xlim=(0, 1), ylim=(-0.001, 0.001))
 line, = ax.plot([], [], lw=2)
+plt.xlabel("x [m]")
+plt.ylabel("$\phi$ [m]")
+plt.title("Position de la corde de 0 à 100 ms")
 
-# 1 frame pour 50 itérations temporelles
-phi_anim = phi[::50]
-psi_anim = psi[::50]
+# 1 frame pour 100 itérations temporelles
+phi_anim = phi[::200]
+psi_anim = psi[::200]
 
 # fonction d'initialisation
 def fonc_init():
@@ -75,6 +79,10 @@ def anim(i):
     return line,
 
 # animation
-corde1 = FuncAnimation(fig2, anim, init_func=fonc_init, frames=100, interval=20, repeat=False)
+corde1 = FuncAnimation(fig2, anim, init_func=fonc_init, frames=500, interval=10, repeat=True)
+
+# sauvegarde
 writervideo = FFMpegWriter(fps=30)
 corde1.save("corde1.mp4", writer=writervideo)
+
+plt.show()
