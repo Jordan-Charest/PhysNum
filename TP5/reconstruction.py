@@ -12,7 +12,7 @@ import time
 # local files
 import geometry as geo
 import util as util
-import CTfilter as CTfilter
+import CTfiltre as CTfilter
 
 ## créer l'ensemble de données d'entrée à partir des fichiers
 def readInput():
