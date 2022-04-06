@@ -34,3 +34,15 @@ dataDir = "./data/"
 anglesFile = "angles.txt"
 sinogramFile = "sinogram-patient.txt"
 
+## Valeurs d'atténuation par interpolation linéaire
+# 
+# Arguments:
+# rayon1, rayon2 : valeurs d'atténuation des deux rayons adjacents
+# dist_centre_vox : distance perpendiculaire entre le rayon1
+# et le centre du voxel [cm]
+# 
+# Retourne la valeur d'atténuation du voxel
+
+def interpol_lin(rayon1, rayon2, dist_centre_vox):
+    pente_interpol = (rayon2 - rayon1) / pixsize
+    return rayon1 + dist_centre_vox * pente_interpol
