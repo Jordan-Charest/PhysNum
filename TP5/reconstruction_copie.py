@@ -151,10 +151,6 @@ def backproject_interpol():
                 else:
                     indice_rayon1 = int(geo.nbpix / 2 + math.ceil(distance_rayon))
                     indice_rayon2 = int(geo.nbpix / 2 + math.floor(distance_rayon))
-                #if np.round(distance_rayon) > distance_rayon:
-                    #indice_rayon2 = indice_rayon1 - 1
-                #else:
-                    #indice_rayon2 = indice_rayon1 + 1
                 r1 = sinogram[a][indice_rayon1]
                 r2 = sinogram[a][indice_rayon2]
                 d = abs(distance_rayon) % 1 * geo.pixsize
