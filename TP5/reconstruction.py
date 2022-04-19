@@ -102,7 +102,7 @@ def reconFourierSlice():
     #image reconstruite
     image = np.zeros((geo.nbvox, geo.nbvox))
     #votre code ici
-   
+
     
     util.saveImage(image, "fft")
 
