@@ -13,7 +13,7 @@ def psi_init(x, x_0, delta_x, k_0):
 def iteration_temporelle(psi_1, dt, V, m):
     phi = exp(-1j*V*dt / (2*hbar)) * psi_1
     phi_fourier = np.fft.fft(phi)
-    k = np.fft.fftfreq(len(phi), 0.5/5000)
+    k = np.fft.fftfreq(len(phi), 20*10**(-8)/5000)
     # k = np.fft.fftshift(k)
     # print(k)
     T = hbar**2 * k**2 / (2 * m)
@@ -29,7 +29,7 @@ def evolution_temporelle(psi_init, N, dt, V, m):
     for i in range(N):
         psi_2 = iteration_temporelle(psi[-1], dt, V, m)
         psi.append(psi_2)
-    return temps, psi
+    return temps, np.array(psi)
 
 # def iteration_temporelle(psi_1, dt, t):
 #     phi = exp(-1j*V*(t) / (2*hbar)) * psi_1
