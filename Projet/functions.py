@@ -1,3 +1,4 @@
+from tkinter import X
 import numpy as np
 from numpy import pi, exp
 import matplotlib.pyplot as plt
@@ -5,26 +6,14 @@ import matplotlib.pyplot as plt
 # constantes (SI)
 hbar = 1.05457182 * 10**(-34)
 
-# paramètres
-delta_x = 0.01
-x_0 = 0
-k_0 = 0
-dt = 10
-m = 3 * 10**(-31)
+def psi_init(x, x_0, delta_x, k_0):
+    psi_init = (1 / (2*np.pi*delta_x**2))**(1/4) * exp(1j*k_0*x - (x-x_0)**2 / (4*delta_x**2))
+    return psi_init
 
-# espace 1D
-x = np.linspace(-10, 10, 1000)
-
-V = 0
-
-# psi_init = (1 / (2*pi*delta_x**2))**(1/4) * exp(1j*k_0*x - (x-x_0)**2 / (4*delta_x**2))
-
-V = 0
-
-def iteration_temporelle(psi_1, dt):
+def iteration_temporelle(psi_1, dt, V, m):
     phi = exp(-1j*V*dt / (2*hbar)) * psi_1
     phi_fourier = np.fft.fft(phi)
-    k = np.fft.fftfreq(len(phi))
+    k = np.fft.fftfreq(len(phi), 0.5/5000)
     # k = np.fft.fftshift(k)
     # print(k)
     T = hbar**2 * k**2 / (2 * m)
@@ -34,11 +23,11 @@ def iteration_temporelle(psi_1, dt):
     return psi_2
 
 
-def evolution_temporelle(psi_init, N, dt):
+def evolution_temporelle(psi_init, N, dt, V, m):
     temps = np.linspace(0, N*dt, N)
     psi = [psi_init]
     for i in range(N):
-        psi_2 = iteration_temporelle(psi[-1], dt)
+        psi_2 = iteration_temporelle(psi[-1], dt, V, m)
         psi.append(psi_2)
     return temps, psi
 
