@@ -11,7 +11,7 @@ hbar = 1.05457182 * 10**(-34)
 # paramètres
 delta_x = 1*10**(-10)
 x_0 = 0
-k_0 = -27 * 10** 10
+k_0 = -27 * 10**10
 N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final

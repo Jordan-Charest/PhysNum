@@ -11,7 +11,7 @@ hbar = 1.05457182 * 10**(-34)
 # paramètres
 delta_x = 1*10**(-10)
 x_0 = -0.5 * 10**(-8)
-k_0 = -27 * 10** 10
+k_0 = -30 * 10 ** 10
 N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
@@ -50,7 +50,7 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/propag_libre.mp4" 
+f = "Projet\/animations\/propag_libre_3.mp4" 
 writervideo = animation.FFMpegWriter(fps=60) 
 ani.save(f, writer=writervideo)
 
