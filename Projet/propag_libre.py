@@ -11,7 +11,7 @@ hbar = 1.05457182 * 10**(-34)
 # paramètres
 delta_x = 1*10**(-10)
 x_0 = -0.5 * 10**(-8)
-k_0 = -30 * 10 ** 10
+k_0 = 5*10**10
 N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
@@ -27,11 +27,12 @@ psi_init = psi_init / np.sqrt((sum(np.abs(psi_init)**2)))
 
 t, psi = evolution_temporelle(psi_init, N, dt, V, m)
 
-fig = plt.figure(figsize=(5, 4))
+fig = plt.figure(figsize=(6, 5))
 ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 0.5))
 # ax.set_aspect("equal")
 ax.grid()
-plt.xlabel("Angstrom")
+plt.ylabel("$|ψ|^2$")
+plt.xlabel("$x$ [Å]")
 
 line, = ax.plot([], [], "-", lw=1)
 time_template = 'temps = %.3f fs'
@@ -50,7 +51,7 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/propag_libre_3.mp4" 
+f = "Projet\/animations\/propag_libre_2.mp4" 
 writervideo = animation.FFMpegWriter(fps=60) 
 ani.save(f, writer=writervideo)
 

@@ -14,8 +14,6 @@ def iteration_temporelle(psi_1, dt, V, m):
     phi = exp(-1j*V*dt / (2*hbar)) * psi_1
     phi_fourier = np.fft.fft(phi)
     k = np.fft.fftfreq(len(phi), 20*10**(-8)/5000)
-    # k = np.fft.fftshift(k)
-    # print(k)
     T = hbar**2 * k**2 / (2 * m)
     fourier = exp(-1j*T*dt / (hbar)) * phi_fourier
     fourier_inv = np.fft.ifft(fourier)
