@@ -11,8 +11,8 @@ hbar = 1.05457182 * 10**(-34)
 # paramètres
 delta_x = 1*10**(-10)
 x_0 = -0.8 * 10**(-8)
-k_0 = 20 * 10 ** 10
-N = 5000 # Nombre de pas
+k_0 = -27 * 10 ** 10
+N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
 m = 3 * 10**(-31)
@@ -40,11 +40,12 @@ fig = plt.figure(figsize=(5, 4))
 ax = fig.add_subplot(autoscale_on=True, xlim=(-10**(-8), 10**(-8)), ylim=(0, 0.5))
 # ax.set_aspect("equal")
 ax.grid()
-plt.axvline(x=0, color="black")
+plt.axvline(x=-0.5*10**(-8), color="black")
+plt.axvline(x=0.5*10**(-8), color="black")
 
 line, = ax.plot([], [], "-", lw=1)
 time_template = 'temps = %.3f fs'
-time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)
+time_text = ax.text(0.08, 0.9, '', transform=ax.transAxes)
 
 # y = np.linspace(-10, 10, 1000)
 
@@ -59,15 +60,20 @@ def animate(i):
     return line, time_text
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
+
+f = "Projet\/animations\/puit_pot.mp4" 
+writervideo = animation.FFMpegWriter(fps=60) 
+ani.save(f, writer=writervideo)
+
 plt.show()
 
 
 # détermination de R et T
-R = []
-T = []
+# R = []
+# T = []
 
-psi_apres = psi[4000]
-R = sum(np.abs(psi_apres[:2500]))
-T = sum(np.abs(psi_apres[2500:]))
+# psi_apres = psi[4000]
+# R = sum(np.abs(psi_apres[:2500]))
+# T = sum(np.abs(psi_apres[2500:]))
 
-print(R/(R+T), T/(R+T))
+# print(R/(R+T), T/(R+T))
