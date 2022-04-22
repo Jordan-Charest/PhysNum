@@ -37,10 +37,11 @@ psi_init = psi_init / np.sqrt((sum(np.abs(psi_init)**2)))
 t, psi = evolution_temporelle(psi_init, N, dt, V, m)
 
 fig = plt.figure(figsize=(5, 4))
-ax = fig.add_subplot(autoscale_on=True, xlim=(-10**(-8), 10**(-8)), ylim=(0, 0.5))
+ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 0.5))
 # ax.set_aspect("equal")
 ax.grid()
 plt.axvline(x=0, color="black")
+plt.xlabel("Angstrom")
 
 line, = ax.plot([], [], "-", lw=1)
 time_template = 'temps = %.3f fs'
@@ -53,7 +54,7 @@ psi_anim = psi[::20]
 def animate(i):
     this_psi = psi_anim[i]
 
-    line.set_data(x, abs(this_psi))
+    line.set_data(x*10**10, abs(this_psi))
     # line.set_data(x, x*i/50)
     time_text.set_text(time_template % (i*dt*20 * 10**15))
     return line, time_text
