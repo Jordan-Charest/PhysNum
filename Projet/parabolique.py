@@ -11,12 +11,12 @@ hbar = 1.05457182 * 10**(-34)
 # paramètres
 delta_x = 1*10**(-10)
 x_0 = 0
-k_0 = 5 * 10 ** 10 # 1 et 5 et 5
+k_0 = 5 * 10 ** 10 # 1 et 5
 N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
 m = 3 * 10**(-31)
-omega = 2 * 10 ** 15 # 1 et 2
+omega = 1 * 10 ** 15
 vit = 10 # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
 # espace 1D
@@ -62,11 +62,11 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/parabolique_3.mp4" 
-writervideo = animation.FFMpegWriter(fps=60) 
-ani.save(f, writer=writervideo)
+# f = "Projet\/animations\/parabolique_2.mp4" 
+# writervideo = animation.FFMpegWriter(fps=60) 
+# ani.save(f, writer=writervideo)
 
-plt.show()
+# plt.show()
 
 
 # détermination de R et T

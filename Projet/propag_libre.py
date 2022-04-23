@@ -51,9 +51,9 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/propag_libre_2.mp4" 
-writervideo = animation.FFMpegWriter(fps=60) 
-ani.save(f, writer=writervideo)
+# f = "Projet\/animations\/propag_libre_2.mp4" 
+# writervideo = animation.FFMpegWriter(fps=60) 
+# ani.save(f, writer=writervideo)
 
 #plt.show()
 

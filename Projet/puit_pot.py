@@ -70,11 +70,11 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/barr_pot_1.mp4" 
-writervideo = animation.FFMpegWriter(fps=60) 
-ani.save(f, writer=writervideo)
+# f = "Projet\/animations\/barr_pot_1.mp4" 
+# writervideo = animation.FFMpegWriter(fps=60) 
+# ani.save(f, writer=writervideo)
 
-plt.show()
+# plt.show()
 
 
 # détermination de R et T
