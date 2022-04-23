@@ -16,13 +16,13 @@ N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
 m = 3 * 10**(-31)
-V_0 = 5 * 10**(-19)
+V_0 = 5 * 10**(-19) #-5 et 5
 vit = 10 # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
 # espace 1D
 x = np.linspace(-10*10**(-8), 10*10**(-8), 5000)
 
-# potentiel 
+# potentiel
 V_liste = []
 for i in x:
     if abs(i) < 0.5*10**(-8):

@@ -9,7 +9,7 @@ import matplotlib.animation as animation
 hbar = 1.05457182 * 10**(-34)
 
 # paramètres
-delta_x = 5*10**(-10)
+delta_x = 5*10**(-10) #1 et 5
 x_0 = 0
 k_0 = 0
 N = 8000 # Nombre de pas
