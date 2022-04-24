@@ -9,16 +9,16 @@ import matplotlib.animation as animation
 hbar = 1.05457182 * 10**(-34)
 
 # paramètres
-delta_x = 1*10**(-10)
+delta_x = 5*10**(-10)
 x_0 = -0.8 * 10**(-8)
 k_0 = 5 * 10 ** 10
-N = 8000 # Nombre de pas
+N = 16000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
 m = 3 * 10**(-31)
-V_0 = 5 * 10**(-19) #-5 et 5
+Nb = 5000 # Nombres de divisions spatiales
+V_0 = 10 * 10**(-19) #-10 et 10
 vit = 10 # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
-Nb = 5000 # Nombre de divisions de l'espace
 
 # espace 1D
 x = np.linspace(-10*10**(-8), 10*10**(-8), Nb)
@@ -33,12 +33,12 @@ for i in x:
 V = np.array(V_liste)
 
 psi_init = psi_init(x, x_0, delta_x, k_0)
-psi_init = psi_init / np.sqrt((sum(np.abs(psi_init)**2))*20*10**(-8)/Nb)
+psi_init = psi_init / np.sqrt(sum(np.abs(psi_init)**2)*20*10**(-8)/Nb)
 
-t, psi = evolution_temporelle(psi_init, N, Nb, dt, V, m)
+t, psi = evolution_temporelle(psi_init, N, dt, V, m, Nb)
 
 fig = plt.figure(figsize=(6, 5))
-ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 5*10**9))
+ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 1.5*10**9))
 # ax.set_aspect("equal")
 ax.grid()
 plt.axvline(x=-50, color="black")
@@ -65,13 +65,13 @@ def animate(i):
     # line.set_data(x, x*i/50)
     time_text.set_text(time_template % (i*dt*20 * 10**15))
     pot_1.set_text(pot_template % (0))
-    pot_2.set_text(pot_template % (31.21))
+    pot_2.set_text(pot_template % (6.242))
     pot_3.set_text(pot_template % (0))
     return line, time_text
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/barr_pot_5k_test.mp4" 
+f = "Projet\/animations\/barr_pot_50000.mp4" 
 writervideo = animation.FFMpegWriter(fps=60) 
 ani.save(f, writer=writervideo)
 
