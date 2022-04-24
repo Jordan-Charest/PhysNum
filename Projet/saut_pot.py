@@ -17,7 +17,7 @@ dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
 m = 3 * 10**(-31)
 Nb = 5000 # Nombres de divisions spatiales
-V_0 = 20 * 10**(-19) # 10 et 20
+V_0 = 10 * 10**(-19) # 10 et 20
 vit = 10 # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
 # espace 1D
@@ -26,7 +26,7 @@ x = np.linspace(-10*10**(-8), 10*10**(-8), Nb)
 # potentiel 
 V_liste = []
 for i in x:
-    if i < 0:
+    if i > 0:
         V_liste.append(V_0)
     else:
         V_liste.append(0)
@@ -68,7 +68,7 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/saut_pot_2.mp4"
+f = "Projet\/animations\/saut_pot_1.mp4"
 writervideo = animation.FFMpegWriter(fps=60)
 ani.save(f, writer=writervideo)
 
@@ -87,5 +87,5 @@ print(R/(R+T), T/(R+T))
 
 
 # Résultats R, T:
-# 1 : 0.34382919149732 0.6561708085026801
-# 2 : 0.9999964136864334 3.5863135665206633e-06
+# 1 : 0.4006630337341128 0.5993369662658873
+# 2 : 0.9999999999933886 6.611443792618595e-12
