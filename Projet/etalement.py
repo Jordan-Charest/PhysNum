@@ -51,7 +51,7 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-f = "Projet\/animations\/etalement_2.mp4" 
+f = "Projet\/animations\/etalement_test.mp4" 
 writervideo = animation.FFMpegWriter(fps=60) 
 ani.save(f, writer=writervideo)
 

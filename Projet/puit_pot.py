@@ -18,9 +18,10 @@ t_max = N*dt # Temps final
 m = 3 * 10**(-31)
 V_0 = 5 * 10**(-19) #-5 et 5
 vit = 10 # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
+Nb = 5000 # Nombre de divisions de l'espace
 
 # espace 1D
-x = np.linspace(-10*10**(-8), 10*10**(-8), 5000)
+x = np.linspace(-10*10**(-8), 10*10**(-8), Nb)
 
 # potentiel
 V_liste = []
@@ -32,12 +33,12 @@ for i in x:
 V = np.array(V_liste)
 
 psi_init = psi_init(x, x_0, delta_x, k_0)
-psi_init = psi_init / np.sqrt((sum(np.abs(psi_init)**2)))
+psi_init = psi_init / np.sqrt((sum(np.abs(psi_init)**2))*20*10**(-8)/Nb)
 
-t, psi = evolution_temporelle(psi_init, N, dt, V, m)
+t, psi = evolution_temporelle(psi_init, N, Nb, dt, V, m)
 
 fig = plt.figure(figsize=(6, 5))
-ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 0.5))
+ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 5*10**9))
 # ax.set_aspect("equal")
 ax.grid()
 plt.axvline(x=-50, color="black")
@@ -60,7 +61,7 @@ psi_anim = psi[::20]
 def animate(i):
     this_psi = psi_anim[i]
 
-    line.set_data(x*10**10, abs(this_psi))
+    line.set_data(x*10**10, abs(this_psi)**2)
     # line.set_data(x, x*i/50)
     time_text.set_text(time_template % (i*dt*20 * 10**15))
     pot_1.set_text(pot_template % (0))
@@ -70,9 +71,9 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-# f = "Projet\/animations\/barr_pot_1.mp4" 
-# writervideo = animation.FFMpegWriter(fps=60) 
-# ani.save(f, writer=writervideo)
+f = "Projet\/animations\/barr_pot_5k_test.mp4" 
+writervideo = animation.FFMpegWriter(fps=60) 
+ani.save(f, writer=writervideo)
 
 # plt.show()
 
