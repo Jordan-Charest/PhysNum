@@ -10,10 +10,10 @@ def psi_init(x, x_0, delta_x, k_0):
     psi_init = (1 / (2*np.pi*delta_x**2))**(1/4) * exp(1j*k_0*x - (x-x_0)**2 / (4*delta_x**2))
     return psi_init
 
-def iteration_temporelle(psi_1, dt, V, m):
+def iteration_temporelle(psi_1, dt, V, m, Nb):
     phi = exp(-1j*V*dt / (2*hbar)) * psi_1
     phi_fourier = np.fft.fft(phi)
-    k = np.fft.fftfreq(len(phi), 20*10**(-8)/5000)
+    k = np.fft.fftfreq(len(phi), 20*10**(-8)/Nb)
     T = hbar**2 * k**2 / (2 * m)
     fourier = exp(-1j*T*dt / (hbar)) * phi_fourier
     fourier_inv = np.fft.ifft(fourier)
@@ -21,11 +21,11 @@ def iteration_temporelle(psi_1, dt, V, m):
     return psi_2
 
 
-def evolution_temporelle(psi_init, N, dt, V, m):
+def evolution_temporelle(psi_init, N, dt, V, m, Nb):
     temps = np.linspace(0, N*dt, N)
     psi = [psi_init]
     for i in range(N):
-        psi_2 = iteration_temporelle(psi[-1], dt, V, m)
+        psi_2 = iteration_temporelle(psi[-1], dt, V, m, Nb)
         psi.append(psi_2)
     return temps, np.array(psi)
 

@@ -9,29 +9,30 @@ import matplotlib.animation as animation
 hbar = 1.05457182 * 10**(-34)
 
 # paramètres
-delta_x = 1*10**(-10)
+delta_x = 5*10**(-10)
 x_0 = 0
 k_0 = 5 * 10 ** 10 # 1 et 5
 N = 8000 # Nombre de pas
 dt = 1 * 10**(-17) # Intervalle de temps
 t_max = N*dt # Temps final
 m = 3 * 10**(-31)
+Nb = 5000 # Nombre de divisions spatiales
 omega = 1 * 10 ** 15
 vit = 10 # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
 # espace 1D
-x = np.linspace(-10*10**(-8), 10*10**(-8), 5000)
+x = np.linspace(-10*10**(-8), 10*10**(-8), Nb)
 
 # potentiel
 V = 1/2 * m * omega**2 * x**2
 
 psi_init = psi_init(x, x_0, delta_x, k_0)
-psi_init = psi_init / np.sqrt((sum(np.abs(psi_init)**2)))
+psi_init = psi_init / np.sqrt(sum(np.abs(psi_init)**2)*20*10**(-8)/Nb)
 
-t, psi = evolution_temporelle(psi_init, N, dt, V, m)
+t, psi = evolution_temporelle(psi_init, N, dt, V, m, Nb)
 
 fig = plt.figure(figsize=(6, 5))
-ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 0.5))
+ax = fig.add_subplot(autoscale_on=True, xlim=(-50, 50), ylim=(0, 0.8*10**10))
 # ax.set_aspect("equal")
 ax.grid()
 ax.plot(x, V, color="black")
@@ -53,7 +54,7 @@ psi_anim = psi[::20]
 def animate(i):
     this_psi = psi_anim[i]
 
-    line.set_data(x*10**10, abs(this_psi))
+    line.set_data(x*10**10, abs(this_psi)**2)
     line2.set_data(x*10**10, V)
     # line.set_data(x, x*i/50)
     time_text.set_text(time_template % (i*dt*20 * 10**15))
@@ -62,9 +63,9 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
 
-# f = "Projet\/animations\/parabolique_2.mp4" 
-# writervideo = animation.FFMpegWriter(fps=60) 
-# ani.save(f, writer=writervideo)
+f = "Projet\/animations\/parabolique_2.mp4" 
+writervideo = animation.FFMpegWriter(fps=60) 
+ani.save(f, writer=writervideo)
 
 # plt.show()
 
