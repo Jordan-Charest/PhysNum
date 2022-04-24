@@ -63,7 +63,7 @@ def animate(i):
     # line.set_data(x, x*i/50)
     time_text.set_text(time_template % (i*dt*20 * 10**15))
     pot_1.set_text(pot_template % (0))
-    pot_2.set_text(pot_template % (12.484))
+    pot_2.set_text(pot_template % (6.484))
     return line, time_text
 
 ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
