@@ -17,7 +17,7 @@ N = 8000                    # Nombre de pas
 dt = 1 * 10**(-17)          # Intervalle de temps [s]
 t_max = N*dt                # Temps final [s]
 m = 3 * 10**(-31)           # Masse de la particule [kg]
-Nb = 5000                   # Nombres de divisions spatiales
+Nb = 50000                  # Nombres de divisions spatiales
 V_0 = 10 * 10**(-19)        # Hauteur du potentiel [J]
 vit = 10                    # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
@@ -70,10 +70,8 @@ def animate(i):
     pot_2.set_text(pot_template % (6.484))
     return line, time_text
 
-ani = animation.FuncAnimation(fig, animate, len(psi_anim), interval=1, repeat=False)
-
 # On appelle la fonction generate_animation pour générer l'animation
-file_path = "Projet\/animations\/saut_potentiel.mp4"
+file_path = "Projet\/animations\/saut_potentiel_50k.mp4"
 generate_animation(fig, animate, len(psi_anim), file_path)
 
 # détermination de R et T

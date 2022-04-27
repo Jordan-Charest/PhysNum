@@ -2,6 +2,7 @@
 ## JORDAN CHAREST ET BENJAMIN CLAVEAU ##
 
 Tous les fichiers .py nécessaires pour générer les simulations, les animations et les figures se trouvant dans le rapport final se trouvent dans ce dossier.
+À noter que le code utiliser pour générer les animation s'inspire du code fourni en exemple dans la documentation de la librairie FuncAnimation.
 
 Contenu du dossier "Projet":
 

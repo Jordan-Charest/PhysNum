@@ -13,12 +13,12 @@ hbar = 1.05457182 * 10**(-34)
 delta_x = 5*10**(-10)       # Largeur de la gaussienne [m]
 x_0 = -0.8 * 10**(-8)       # Position de la gaussienne [m]
 k_0 = 5 * 10 ** 10          # Nombre d'onde [rad/m]
-N = 16000                   # Nombre de pas
+N = 8000                   # Nombre de pas
 dt = 1 * 10**(-17)          # Intervalle de temps [s]
 t_max = N*dt                # Temps final [s]
 m = 3 * 10**(-31)           # Masse de la particule [kg]
-Nb = 5000                   # Nombres de divisions spatiales
-V_0 = -10 * 10**(-19)       # Hauteur du potentiel [J]
+Nb = 50000                   # Nombres de divisions spatiales
+V_0 = 5 * 10**(-19)       # Hauteur du potentiel [J]
 vit = 10                    # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
 # Espace 1D
@@ -74,5 +74,5 @@ def animate(i):
     return line, time_text
 
 # On appelle la fonction generate_animation pour générer l'animation
-file_path = "Projet\/animations\/puits_potentiel.mp4"
+file_path = "Projet\/animations\/barr_pot_50k.mp4"
 generate_animation(fig, animate, len(psi_anim), file_path)
