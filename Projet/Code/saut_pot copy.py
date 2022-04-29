@@ -18,21 +18,20 @@ dt = 1 * 10**(-17)          # Intervalle de temps [s]
 t_max = N*dt                # Temps final [s]
 m = 3 * 10**(-31)           # Masse de la particule [kg]
 Nb = 50000                  # Nombres de divisions spatiales
-V_0 = 10 * 10**(-19)        # Hauteur du potentiel [J]
+V_0 = 20 * 10**(-19)        # Hauteur du potentiel [J]
 vit = 10                    # Vitesse d'animation. 1 = normal, 10 = 10x plus vite
 
 # Espace 1D
 x = np.linspace(-10*10**(-8), 10*10**(-8), Nb)
-V = V_0 / (1+np.exp(-8*10**(10)*x))
 
 # Potentiel 
-# V_liste = []
-# for i in x:
-#     if i > 0:
-#         V_liste.append(V_0)
-#     else:
-#         V_liste.append(0)
-# V = np.array(V_liste)
+V_liste = []
+for i in x:
+    if i > 0:
+        V_liste.append(V_0)
+    else:
+        V_liste.append(0)
+V = np.array(V_liste)
 
 # Fonction d'onde initiale
 psi_init = psi_init(x, x_0, delta_x, k_0)
@@ -43,9 +42,8 @@ t, psi = evolution_temporelle(psi_init, N, dt, V, m, Nb)
 
 # On génère la figure
 fig = plt.figure(figsize=(6, 5))
-ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 2.5*10**9))
+ax = fig.add_subplot(autoscale_on=True, xlim=(-100, 100), ylim=(0, 1*10**9))
 ax.grid()
-ax.plot(x, V)
 
 plt.axvline(x=0, color="black")
 
@@ -73,7 +71,7 @@ def animate(i):
     return line, time_text
 
 # On appelle la fonction generate_animation pour générer l'animation
-file_path = "Projet\/animations\/saut_potentiel_50k_sigmoid.mp4"
+file_path = "Projet\/animations\/saut_potentiel_50k_2.mp4"
 generate_animation(fig, animate, len(psi_anim), file_path)
 
 # détermination de R et T
